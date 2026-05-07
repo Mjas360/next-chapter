@@ -1,8 +1,16 @@
 {
   "extends": "@react-native/typescript-config",
   "compilerOptions": {
-    "types": ["jest"]
+    "types": ["jest"],
+    "jsx": "react-native",
+    "strict": true, 
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+       "@assets/*": ["assets/*"]
+    } 
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/auth-stack/onboarding"],
   "exclude": ["**/node_modules", "**/Pods"]
 }

@@ -10,6 +10,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://www.jitpack.io' }
+        
+        maven { url 'https://s01.oss.sonatype.org/content/repositories/releases/' }
     }
     dependencies {
         classpath("com.android.tools.build:gradle")
