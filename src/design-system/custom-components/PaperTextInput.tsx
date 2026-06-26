@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 import { TextInput, TextInputProps } from 'react-native-paper';
 import { useAppTheme } from '../app-theme/useAppTheme';
