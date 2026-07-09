@@ -1,4 +1,4 @@
-package com.moonieapp
+package com.nextchapter
 
 import android.os.Bundle
 import com.facebook.react.ReactActivity
@@ -14,7 +14,7 @@ class MainActivity : ReactActivity() {
     super.onCreate(null)
   }
 
-  override fun getMainComponentName(): String = "moonieapp"
+  override fun getMainComponentName(): String = "NextChapter"
 
   override fun createReactActivityDelegate(): ReactActivityDelegate {
     return DefaultReactActivityDelegate(

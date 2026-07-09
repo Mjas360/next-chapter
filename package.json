@@ -1,5 +1,5 @@
 {
-  "name": "moonieapp",
+  "name": "nextchapter",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "ios": "ENVFILE=.env.development node scripts/ios-name.js",
     "lint": "eslint .",
     "start": "react-native start --reset-cache",
-    "clean:ios": "cd ios && rm -rf Pods && rm -rf Podfile.lock && rm -rf moonieapp.xcworkspace && pod install && cd ..",
+    "clean:ios": "cd ios && rm -rf Pods && rm -rf Podfile.lock && rm -rf nextchapter.xcworkspace && pod install && cd ..",
     "clean:android": "cd android && rm -rf .gradle && ./gradlew clean --warning-mode all && cd ..",
     "generate:locale-index": "node scripts/i18n-builder/generate-locale-index.js",
     "i18n:builder": "node scripts/i18n-builder/i18n-namespaced-builder.js && npm run generate:locale-index",
