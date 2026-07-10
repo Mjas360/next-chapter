@@ -2,6 +2,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StatusBar,
   StyleProp,
   View,
   ViewStyle,
@@ -15,6 +16,7 @@ interface ScreenProps {
   keyboardAware?: boolean;
   applyInsets?: boolean;
   styles?: StyleProp<ViewStyle>;
+  statusBarStyle?: 'default' | 'light-content' | 'dark-content';
 }
 
 export const ScreenContent = ({
@@ -23,6 +25,7 @@ export const ScreenContent = ({
   keyboardAware = true,
   applyInsets = true,
   styles,
+  statusBarStyle = 'dark-content',
 }: ScreenProps) => {
   const { colors } = useAppTheme();
   const insets = useSafeAreaInsets();
@@ -37,6 +40,7 @@ export const ScreenContent = ({
         ...styles,
       }}
     >
+      <StatusBar barStyle={statusBarStyle} translucent />
       {children}
     </View>
   );

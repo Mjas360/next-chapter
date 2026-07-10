@@ -14,7 +14,7 @@ class MainActivity : ReactActivity() {
     super.onCreate(null)
   }
 
-  override fun getMainComponentName(): String = "NextChapter"
+  override fun getMainComponentName(): String = "nextchapter"
 
   override fun createReactActivityDelegate(): ReactActivityDelegate {
     return DefaultReactActivityDelegate(
