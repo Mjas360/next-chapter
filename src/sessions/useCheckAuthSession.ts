@@ -14,8 +14,8 @@ export const useCheckAuthSession = () => {
       
       if (isLoggedIn) return;
 
-      // get fresh userdata
-      // 
+      // TODO: get new refresh token from backend and update redux state
+      // Get user data
     } catch (error: Error | any) {
       emitSnackbar({
         type: 'error',

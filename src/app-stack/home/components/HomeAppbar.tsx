@@ -12,16 +12,16 @@ const HomeAppbar = () => {
       <Appbar.Content
         title={
           <Flex direction="row" align="center" gap={8}>
-            <Avatar.Image
+            {/* <Avatar.Image
               style={{
                 borderRadius: 6,
               }}
               size={26}
               source={require('@assets/logos/ios-app-icon.png')}
-            />
+            /> */}
             <Text
               style={{
-                fontFamily: 'Montserrat-SemiBold',
+                // fontFamily: 'Montserrat-SemiBold',
                 fontSize: 20,
                 letterSpacing: 0.9,
               }}

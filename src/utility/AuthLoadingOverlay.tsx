@@ -4,6 +4,7 @@ import {
   ActivityIndicator,
   Animated,
   Image,
+  StatusBar,
   StyleSheet,
   View,
 } from 'react-native';
@@ -13,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { useAppTheme } from '~/design-system/app-theme/useAppTheme';
 import { INSET_SAFE_MARGIN } from '~/design-system/tokens';
 import { useBreathingAnimation } from '~/hooks/useBreathingAnimation';
+import { useFadeAnimation } from '~/hooks/useFadeAnimation';
 import { RootState } from '~/redux/store';
 
 const AuthLoadingOverlay = () => {
@@ -22,29 +24,37 @@ const AuthLoadingOverlay = () => {
     (state: RootState) => state.userReducer,
   );
 
-  const { animatedStyle } = useBreathingAnimation({
+  const { animatedStyle: breathAnimatedStyle } = useBreathingAnimation({
     minScale: 0.9,
     autoStart: isCheckingAuth,
   });
 
-  if (!isCheckingAuth) return null;
+  const { shouldRender, animatedStyle: fadeAnimatedStyle } = useFadeAnimation({
+    visible: isCheckingAuth || false,
+    duration: 350,
+  });
+
+  if (!shouldRender) return null;
 
   return (
     <Portal>
-      <View
+      <StatusBar barStyle="light-content" translucent />
+
+      <Animated.View
         style={[
           styles.wrapper,
           {
             backgroundColor: colors.primary,
           },
+          fadeAnimatedStyle,
         ]}
       >
         <View
           style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
         >
-          <Animated.View style={animatedStyle}>
+          <Animated.View style={breathAnimatedStyle}>
             <Image
-              source={require('@assets/logos/logo-white.png')}
+              source={require('@assets/logos/app-icon.png')}
               style={styles.logo}
               resizeMode="contain"
             />
@@ -67,9 +77,9 @@ const AuthLoadingOverlay = () => {
             fontFamily: 'Montserrat-Italic',
           }}
         >
-          {t('Send money and pay bills without the stress')}
+          {t('Your story, one page at a time')}
         </Text>
-      </View>
+      </Animated.View>
     </Portal>
   );
 };
@@ -78,7 +88,7 @@ export default AuthLoadingOverlay;
 
 const styles = StyleSheet.create({
   wrapper: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     justifyContent: 'center',
     alignItems: 'center',
   },

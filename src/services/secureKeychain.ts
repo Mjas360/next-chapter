@@ -1,6 +1,6 @@
 import * as Keychain from 'react-native-keychain';
 
-const BASE_SERVICE = 'moonieapp.auth';
+const BASE_SERVICE = 'nextchapter.auth';
 
 export type AuthKeys = 'access_token' | 'refresh_token';
 

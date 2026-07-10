@@ -9,9 +9,9 @@ type Props = ButtonProps & {
 };
 
 const sizeMap = {
-  sm: { height: 36, fontSize: 13, padding: spacing.sm },
+  sm: { height: 36, fontSize: 14, padding: spacing.sm },
   md: { height: 44, fontSize: 14, padding: spacing.md },
-  lg: { height: 52, fontSize: 16, padding: spacing.lg },
+  lg: { height: 54, fontSize: 16, padding: spacing.lg },
 };
 
 export function PaperButton({
@@ -25,6 +25,7 @@ export function PaperButton({
   return (
     <Button
       {...props}
+      disabled={props.disabled || props.loading}
       contentStyle={[
         {
           height: s.height,
@@ -35,6 +36,7 @@ export function PaperButton({
       labelStyle={[
         {
           fontSize: s.fontSize,
+          textTransform: 'capitalize',
         },
         labelStyle,
       ]}

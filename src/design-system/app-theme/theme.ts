@@ -2,7 +2,7 @@ export const lightTheme = {
   colors: {
     black: '#1E1E1E',
     gray: '#E5E5E5',
-    primary: '#54206C',
+    primary: '#005F4C',
     not_white: '#FAFAFA',
     white: '#FFFFFF',
     gray2: '#9D9D9D',
@@ -24,7 +24,7 @@ export const darkTheme = {
   colors: {
     black: '#18181B',
     gray: '#E5E5E5',
-    primary: '#A162D4',
+    primary: '#006a55',
     not_white: '#FAFAFA',
     white: '#FFFFFF',
     gray2: '#9D9D9D',

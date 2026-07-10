@@ -11,6 +11,6 @@
        "@assets/*": ["assets/*"]
     } 
   },
-  "include": ["**/*.ts", "**/*.tsx", "src/auth-stack/onboarding"],
+  "include": ["**/*.ts", "**/*.tsx", "src/other-stack/onboarding"],
   "exclude": ["**/node_modules", "**/Pods"]
 }

@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 export const spacing = {
   xs: 4,
   sm: 8,
@@ -23,7 +25,15 @@ export const radius = {
   full: 999,
 };
 
-export const INSET_SAFE_MARGIN = 16;
+export const INSET_SAFE_MARGIN = Platform.OS === 'ios' ? 16 : 20;
+
+export const FONT_WEIGHTS: any = {
+  regular: '400',
+  medium: '500',
+  semiBold: Platform.OS === 'ios' ? '600' : '800',
+  bold: Platform.OS === 'ios' ? '700' : '800',
+};
+
 export const SCREEN_HORIZONTAL_PADDING = 20;
 export const SCREEN_CONTENT_MARGIN_BOTTOM = 44;
 

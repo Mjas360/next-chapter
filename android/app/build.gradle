@@ -88,7 +88,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        resValue "string", "app_name", project.env.get("APP_NAME") ?: "Moonie App"
+        resValue "string", "app_name", project.env.get("APP_NAME") ?: "NextChapter"
     }
     signingConfigs {
         debug {
