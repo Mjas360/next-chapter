@@ -1,9 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { CartItem } from './types';
+import { CartItemType } from './types';
 
 export const CART_STORAGE_KEY = '@book_nook/cart';
 
-export const saveCart = async (items: CartItem[]) => {
+export const saveCart = async (items: CartItemType[]) => {
   try {
     await AsyncStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
   } catch (error) {
@@ -11,7 +11,7 @@ export const saveCart = async (items: CartItem[]) => {
   }
 };
 
-export const loadCart = async (): Promise<CartItem[]> => {
+export const loadCart = async (): Promise<CartItemType[]> => {
   try {
     const value = await AsyncStorage.getItem(CART_STORAGE_KEY);
 

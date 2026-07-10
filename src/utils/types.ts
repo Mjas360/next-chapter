@@ -23,12 +23,12 @@ export type UIFeedbackVariantType =
   | 'warning'
   | 'info';
 
-export interface CartItem {
+export interface CartItemType {
   id: number;
   title: string;
   author: string;
   image: string;
   price: number;
   quantity: number;
-  [key: string]: any;
+  // [key: string]: any;
 }

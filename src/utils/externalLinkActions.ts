@@ -24,3 +24,8 @@ export const navigateToSearch = () =>
   navigate(screenNames.OTHER_STACK, {
     screen: screenNames.SEARCH,
   });
+
+export const navigateToCart = () =>
+  navigate(screenNames.APP_TAB_STACK, {
+    screen: screenNames.CART,
+  });

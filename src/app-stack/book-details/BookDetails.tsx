@@ -2,9 +2,12 @@ import { useRoute } from '@react-navigation/native';
 import { t } from 'i18next';
 import React, { useRef } from 'react';
 import { Dimensions, Image, StyleSheet, View } from 'react-native';
+import Animated from 'react-native-reanimated';
+import { useDispatch } from 'react-redux';
 import { Container, ScreenContent } from '~/design-system/custom-components';
 import EmptyState from '~/design-system/custom-components/EmptyState';
 import { useFlyAnimation } from '~/hooks/useFlyAnimation';
+import { addToCart } from '~/redux/reducers/cartSlice';
 import { useRQGetBasicQuery } from '~/shared-api/resourceApis';
 import QueryState from '~/utility/QueryState';
 import BookActions from './components/BookActions';
@@ -12,12 +15,12 @@ import BookHero from './components/BookHero';
 import BookMetadata from './components/BookMetadata';
 import BookSummary from './components/BookSummary';
 import SubjectChips from './components/SubjectChips';
-import Animated from 'react-native-reanimated';
 
 const { width } = Dimensions.get('window');
 
 const BookDetails = () => {
   const route = useRoute();
+  const dispatch = useDispatch();
 
   const { bookId } =
     (route.params as {
@@ -74,6 +77,18 @@ const BookDetails = () => {
                     destination: {
                       x: width - 40,
                       y: -60,
+                    },
+                    onFinished: () => {
+                      console.log('Animation complete');
+                      dispatch(
+                        addToCart({
+                          id: book.id,
+                          title: book.title,
+                          author: book.authors?.[0]?.name ?? '',
+                          image: book.formats['image/jpeg'],
+                          price: book.price ?? 0,
+                        }),
+                      );
                     },
                   })
                 }

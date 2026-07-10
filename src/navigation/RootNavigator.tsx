@@ -1,10 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import { navigationRef } from '../services/navigationService';
-import { AppTabNavigator } from './AppTabNavigator';
-import { OtherNavigator } from './OtherNavigator';
 import { screenNames } from '~/utils/screenNames';
+import { navigationRef } from '../services/navigationService';
+import { OtherNavigator } from './OtherNavigator';
+import { TabNavigator } from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +18,7 @@ export function RootNavigator() {
         />
         <Stack.Screen
           name={screenNames.APP_TAB_STACK}
-          component={AppTabNavigator}
+          component={TabNavigator}
         />
       </Stack.Navigator>
     </NavigationContainer>

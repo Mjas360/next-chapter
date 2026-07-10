@@ -9,6 +9,10 @@ import {
 } from 'phosphor-react-native';
 import React from 'react';
 import { Appbar } from 'react-native-paper';
+import { useSelector } from 'react-redux';
+import Cart from '~/app-stack/cart/Cart';
+import Discovery from '~/app-stack/discovery/Discovery';
+import { RootState } from '~/redux/store';
 import { navigateToSearch } from '~/utils/externalLinkActions';
 import Account from '../app-stack/account/Account';
 import Home from '../app-stack/home/Home';
@@ -16,10 +20,6 @@ import { screenNames } from '../utils/screenNames';
 import { CustomTabBar } from './components/CustomTabBar';
 import { ScreenHeader } from './components/ScreenHeader';
 import { TabIcon } from './components/TabIcon';
-import Discovery from '~/app-stack/discovery/Discovery';
-import Search from '~/app-stack/search/Search';
-import { useSelector } from 'react-redux';
-import { RootState } from '~/redux/store';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,7 +27,6 @@ export function TabNavigator() {
   const { items } = useSelector((state: RootState) => state.cartReducer);
   const cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
 
-  
   return (
     <Tab.Navigator
       screenOptions={{
@@ -76,9 +75,9 @@ export function TabNavigator() {
       />
       <Tab.Screen
         name={screenNames.CART}
-        component={Search}
+        component={Cart}
         options={{
-          title: t('Cart'),
+          title: t('Cart ({{count}})', { count: cartItemCount }),
           tabBarBadge: cartItemCount,
           tabBarIcon: ({ color, size, focused }) => (
             <TabIcon
