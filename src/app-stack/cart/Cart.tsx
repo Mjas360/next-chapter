@@ -18,7 +18,7 @@ const Cart = () => {
   const { items } = useSelector((state: RootState) => state.cartReducer);
 
   const subtotal = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + (item.price) * item.quantity,
     0,
   );
 

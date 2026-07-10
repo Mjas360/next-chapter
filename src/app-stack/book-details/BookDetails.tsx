@@ -86,7 +86,7 @@ const BookDetails = () => {
                           title: book.title,
                           author: book.authors?.[0]?.name ?? '',
                           image: book.formats['image/jpeg'],
-                          price: book.price ?? 0,
+                          price: book.price ?? 10,
                         }),
                       );
                     },

@@ -52,7 +52,7 @@ const CartItem = ({
 
         <Flex justify="space-between" direction="row" align="center">
           <Text variant="titleMedium" style={styles.price}>
-            ${item.price.toFixed(2)}
+            ${(item.price || 10).toFixed(2)}
           </Text>
 
           <Flex

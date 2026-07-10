@@ -72,16 +72,16 @@ const CartSummary = ({
       </Flex>
 
       <Flex justify="space-between" direction="row">
-        <Text variant="bodyLarge">Delivery</Text>
+        <Text variant="bodyLarge">{t("Delivery")}</Text>
 
-        <Text variant="bodyLarge">Free</Text>
+        <Text variant="bodyLarge">{t("Free")}</Text>
       </Flex>
 
       <Divider />
 
       <Flex justify="space-between" direction="row">
         <Text variant="titleMedium" style={styles.total}>
-          Total
+          {t("Total")}
         </Text>
 
         <Text variant="titleMedium" style={styles.total}>
