@@ -12,7 +12,7 @@ interface FlexProps {
   children?: React.ReactNode;
 }
 
-const Flex = ({
+export const Flex = ({
   direction = "column",
   align,
   justify,
@@ -40,5 +40,3 @@ const Flex = ({
     </View>
   );
 };
-
-export default Flex;

@@ -18,7 +18,7 @@ interface ListRendererProps<T> {
 
 const { width } = Dimensions.get('window');
 
-function ListRenderer<T>({
+export function ListRenderer<T>({
   data,
   variant = 'list',
   renderItem,
@@ -83,7 +83,6 @@ function ListRenderer<T>({
   );
 }
 
-export default ListRenderer;
 
 interface Props {
   total: number;

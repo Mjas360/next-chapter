@@ -13,7 +13,6 @@ import { useCheckAuthSession } from '~/sessions/useCheckAuthSession';
 import AppErrorFallback from '~/utility/AppErrorFallback';
 import AuthLoadingOverlay from '~/utility/AuthLoadingOverlay';
 import { GlobalSnackbar } from '~/utility/snackbar/GlobalSnackbar';
-import { UIFeedback } from '~/utility/ui-feedback/UIFeedback';
 import {
   paperDarkTheme,
   paperLightTheme,
@@ -51,7 +50,6 @@ function App() {
               <Portal.Host>
                 {/* AuthLoadingOverlay controlled by redux flag */}
                 <AuthLoadingOverlay />
-                <UIFeedback />
                 <GlobalSnackbar />
                 <RootNavigator />
               </Portal.Host>

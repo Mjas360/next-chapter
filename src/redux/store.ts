@@ -1,14 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './reducers/userSlice';
+import { cartMiddleware } from './middleware/cartMiddleware';
+import cartReducer from './reducers/cartSlice';
 import snackbarReducer from './reducers/snackbarSlice';
-import uiFeedbackSlice from './reducers/uiFeedbackSlice';
+import userReducer from './reducers/userSlice';
 
 export const store = configureStore({
   reducer: {
     userReducer,
     snackbarReducer,
-    uiFeedbackSlice,
+    cartReducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(cartMiddleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -16,9 +16,19 @@ export type SnackbarVariantType =
   | 'default'
   | 'warning';
 
-  export type UIFeedbackVariantType =
+export type UIFeedbackVariantType =
   | 'loading'
   | 'success'
   | 'error'
   | 'warning'
   | 'info';
+
+export interface CartItem {
+  id: number;
+  title: string;
+  author: string;
+  image: string;
+  price: number;
+  quantity: number;
+  [key: string]: any;
+}

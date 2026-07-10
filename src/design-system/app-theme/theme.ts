@@ -15,8 +15,8 @@ export const lightTheme = {
     tertiary: '#EEF1F4',
     border: '#EEF1F4',
     border2: '#E5E5E5',
-    background: '#F9F5FF',
-    background2: '#f9edfe',
+    background: '#F3F2F7',
+    background2: '#EDFCF7',
   },
 };
 

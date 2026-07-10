@@ -1,25 +1,33 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { t } from 'i18next';
 import {
-  HeadsetIcon,
+  CompassIcon,
   HouseIcon,
-  SquaresFourIcon,
+  MagnifyingGlassIcon,
+  ShoppingCartIcon,
   UserIcon,
 } from 'phosphor-react-native';
 import React from 'react';
 import { Appbar } from 'react-native-paper';
-import { openHelpCenter } from '~/utils/externalLinkActions';
+import { navigateToSearch } from '~/utils/externalLinkActions';
 import Account from '../app-stack/account/Account';
 import Home from '../app-stack/home/Home';
-import Services from '../app-stack/services/Services';
 import { screenNames } from '../utils/screenNames';
 import { CustomTabBar } from './components/CustomTabBar';
 import { ScreenHeader } from './components/ScreenHeader';
 import { TabIcon } from './components/TabIcon';
+import Discovery from '~/app-stack/discovery/Discovery';
+import Search from '~/app-stack/search/Search';
+import { useSelector } from 'react-redux';
+import { RootState } from '~/redux/store';
 
 const Tab = createBottomTabNavigator();
 
 export function TabNavigator() {
+  const { items } = useSelector((state: RootState) => state.cartReducer);
+  const cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
+
+  
   return (
     <Tab.Navigator
       screenOptions={{
@@ -27,9 +35,9 @@ export function TabNavigator() {
         headerRight: () => (
           <Appbar.Action
             icon={({ size, color }) => (
-              <HeadsetIcon size={size} color={color} weight="bold" />
+              <MagnifyingGlassIcon size={size} color={color} weight="bold" />
             )}
-            onPress={openHelpCenter}
+            onPress={() => navigateToSearch()}
           />
         ),
       }}
@@ -40,7 +48,7 @@ export function TabNavigator() {
         component={Home}
         options={{
           headerShown: false,
-          title: t('Hone'),
+          title: t('Home'),
           tabBarIcon: ({ color, size, focused }) => (
             <TabIcon
               icon={HouseIcon}
@@ -52,13 +60,29 @@ export function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name={screenNames.SERVICES}
-        component={Services}
+        name={screenNames.DISCOVERY}
+        component={Discovery}
         options={{
-          title: t('Services'),
+          title: t('Discovery'),
           tabBarIcon: ({ color, size, focused }) => (
             <TabIcon
-              icon={SquaresFourIcon}
+              icon={CompassIcon}
+              color={color}
+              size={size}
+              focused={focused}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name={screenNames.CART}
+        component={Search}
+        options={{
+          title: t('Cart'),
+          tabBarBadge: cartItemCount,
+          tabBarIcon: ({ color, size, focused }) => (
+            <TabIcon
+              icon={ShoppingCartIcon}
               color={color}
               size={size}
               focused={focused}

@@ -1,9 +1,13 @@
-import { BellIcon, HeadsetIcon } from 'phosphor-react-native';
+import { BellIcon, MagnifyingGlassIcon } from 'phosphor-react-native';
 import React from 'react';
+import { Platform } from 'react-native';
 import { Appbar, Avatar, Text } from 'react-native-paper';
 import { useAppTheme } from '~/design-system/app-theme/useAppTheme';
-import Flex from '~/design-system/custom-components/Flex';
-import { openHelpCenter } from '~/utils/externalLinkActions';
+import { Flex } from '~/design-system/custom-components';
+import { FONT_WEIGHTS } from '~/design-system/tokens';
+import { navigateToSearch } from '~/utils/externalLinkActions';
+
+const APP_LOGO_MARGIN_LEFT = Platform.OS === 'ios' ? -40 : 12; // Adjust this value to move the logo left or right
 
 const HomeAppbar = () => {
   const { colors } = useAppTheme();
@@ -12,34 +16,34 @@ const HomeAppbar = () => {
       <Appbar.Content
         title={
           <Flex direction="row" align="center" gap={8}>
-            {/* <Avatar.Image
+            <Avatar.Image
               style={{
-                borderRadius: 6,
+                borderRadius: 8,
               }}
               size={26}
-              source={require('@assets/logos/ios-app-icon.png')}
-            /> */}
+              source={require('@assets/logos/app-icon.png')}
+            />
             <Text
               style={{
-                // fontFamily: 'Montserrat-SemiBold',
                 fontSize: 20,
                 letterSpacing: 0.9,
+                fontWeight: FONT_WEIGHTS.medium,
               }}
             >
-              Moonie
+              NextChapter
             </Text>
           </Flex>
         }
         style={{
           alignItems: 'flex-start',
-          // marginLeft: -32,
+          marginLeft: APP_LOGO_MARGIN_LEFT,
         }}
       />
       <Appbar.Action
         icon={({ size, color }) => (
-          <HeadsetIcon size={size} color={color} weight="bold" />
+          <MagnifyingGlassIcon size={size} color={color} weight="bold" />
         )}
-        onPress={openHelpCenter}
+        onPress={() => navigateToSearch()}
       />
       <Appbar.Action
         icon={({ size, color }) => (

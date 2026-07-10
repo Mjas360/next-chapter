@@ -1,15 +1,16 @@
+import { t } from 'i18next';
 import React, { useMemo } from 'react';
 import { Dimensions, Image, StyleSheet, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useAppTheme } from '../../design-system/app-theme/useAppTheme';
+import { Text } from 'react-native-paper';
+import { EdgeInsets, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Flex, PaperButton } from '~/design-system/custom-components';
 import {
   FONT_WEIGHTS,
   SCREEN_HORIZONTAL_PADDING,
 } from '~/design-system/tokens';
-import { t } from 'i18next';
-import { PaperButton } from '~/design-system/custom-components';
-import Flex from '~/design-system/custom-components/Flex';
-import { Text } from 'react-native-paper';
+import { navigate } from '~/services/navigationService';
+import { screenNames } from '~/utils/screenNames';
+import { useAppTheme } from '../../design-system/app-theme/useAppTheme';
 
 const { width } = Dimensions.get('window');
 
@@ -44,7 +45,15 @@ const Onboarding = () => {
           </Text>
         </Flex>
 
-        <PaperButton mode="contained" style={{ minWidth: '60%' }}>
+        <PaperButton
+          mode="contained"
+          style={{ minWidth: '60%' }}
+          onPress={() =>
+            navigate(screenNames.APP_TAB_STACK, {
+              screen: screenNames.HOME,
+            })
+          }
+        >
           {t('Continue')}
         </PaperButton>
       </View>
@@ -54,7 +63,7 @@ const Onboarding = () => {
 
 export default Onboarding;
 
-const getStyles = (colors: any, insets: any) =>
+const getStyles = (colors: Record<string, any>, insets: EdgeInsets) =>
   StyleSheet.create({
     container: {
       flex: 1,

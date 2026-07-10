@@ -2,23 +2,17 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import Config from 'react-native-config';
 import { setAccessToken } from '~/redux/reducers/userSlice';
 import { store } from '~/redux/store';
-import { clearAuthSession } from '~/sessions/handleLogout';
 import { getSecureKey, setSecureKey } from '~/services/secureKeychain';
+import { clearAuthSession } from '~/sessions/handleLogout';
 import { endpoints } from '~/utils/endpoints';
 
 export const BASE_URL = Config.API_URL;
 
-// ==============================
-// SINGLE AXIOS INSTANCE
-// ==============================
 export const http = axios.create({
   baseURL: BASE_URL,
   timeout: 15000,
 });
 
-// ==============================
-// REFRESH STATE
-// ==============================
 let isRefreshing = false;
 let subscribers: Array<(token: string) => void> = [];
 
@@ -31,9 +25,6 @@ const onRefreshed = (token: string) => {
   subscribers = [];
 };
 
-// ==============================
-// REQUEST INTERCEPTOR
-// ==============================
 http.interceptors.request.use(
   async (config: any) => {
     try {
@@ -61,9 +52,6 @@ http.interceptors.request.use(
   (error: AxiosError) => Promise.reject(error),
 );
 
-// ==============================
-// RESPONSE INTERCEPTOR
-// ==============================
 http.interceptors.response.use(
   (response: AxiosResponse) => response,
   async (error: AxiosError) => {
@@ -79,9 +67,6 @@ http.interceptors.response.use(
 
     originalRequest._retry = true;
 
-    // ==============================
-    // IF ALREADY REFRESHING → QUEUE
-    // ==============================
     if (isRefreshing) {
       return new Promise(resolve => {
         subscribeTokenRefresh((newToken: string) => {
@@ -97,10 +82,6 @@ http.interceptors.response.use(
     isRefreshing = true;
 
     try {
-      // ==============================
-      // REFRESH TOKEN REQUEST
-      // ==============================
-
       const refreshToken = (await getSecureKey('refresh_token')) || undefined;
 
       const res = await axios.post(`${BASE_URL}${endpoints.REFRESH_TOKEN}`, {
@@ -114,9 +95,6 @@ http.interceptors.response.use(
         throw new Error('No access token returned');
       }
 
-      // ==============================
-      // UPDATE STORAGE + STATE
-      // ==============================
       store.dispatch(setAccessToken(newAccessToken));
 
       await setSecureKey('access_token', newAccessToken);
@@ -125,9 +103,6 @@ http.interceptors.response.use(
         await setSecureKey('refresh_token', newRefreshToken);
       }
 
-      // ==============================
-      // NOTIFY ALL QUEUED REQUESTS
-      // ==============================
       onRefreshed(newAccessToken);
 
       // retry original request

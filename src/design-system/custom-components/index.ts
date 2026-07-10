@@ -5,3 +5,7 @@ export * from './ScreenContent';
 export * from './Container';
 export * from './PaperTextInput';
 export * from './ListRenderer';
+export * from './book-tile/BookTile';
+export * from './ButtonTabs';
+export * from './PaperSearch';
+export * from './InfoRow';

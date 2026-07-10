@@ -17,7 +17,11 @@ export function CustomTabBar({ navigation, state, descriptors, insets }: any) {
       }}
       activeIndicatorStyle={{
         backgroundColor: colors.background,
-        opacity: 0
+        opacity: 0,
+      }}
+      getBadge={({ route }) => {
+        const { options } = descriptors[route.key];
+        return options.tabBarBadge;
       }}
       onTabPress={({ route, preventDefault }) => {
         const event = navigation.emit({

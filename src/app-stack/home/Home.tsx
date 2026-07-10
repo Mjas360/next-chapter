@@ -1,16 +1,21 @@
+import { t } from 'i18next';
 import React from 'react';
 import { View } from 'react-native';
-import { Text } from 'react-native-paper';
 import { useAppTheme } from '~/design-system/app-theme/useAppTheme';
 import { SCREEN_HORIZONTAL_PADDING } from '~/design-system/tokens';
-import LinkedWallets from '~/utility/linked-wallets/LinkedWallets';
+import { navigate } from '~/services/navigationService';
+import BookListing from '~/utility/BookListing';
+import { screenNames } from '~/utils/screenNames';
 import {
-  ScreenContent
+  PaperButton,
+  ScreenContent,
 } from '../../design-system/custom-components';
 import HomeAppbar from './components/HomeAppbar';
+import SpotLight from './components/spot-light/SpotLight';
 
 const Home = () => {
   const { colors } = useAppTheme();
+
   return (
     <View
       style={{
@@ -24,13 +29,16 @@ const Home = () => {
         styles={{
           paddingTop: 12,
           paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
-          gap: 16,
+          gap: 24,
+          marginBottom: 44,
         }}
       >
-        <LinkedWallets />
-        <Text>Qick Services</Text>
-        <Text>Verify your email - dynamic</Text>
-        <Text>Transactions</Text>
+        <SpotLight />
+        <BookListing />
+
+        <PaperButton onPress={() => navigate(screenNames.DISCOVERY)}>
+          {t('See all books')}
+        </PaperButton>
       </ScreenContent>
     </View>
   );
