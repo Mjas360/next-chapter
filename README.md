@@ -15,6 +15,16 @@ The app integrates with the [Gutendex API](https://gutendex.com/books/). Since t
 - Manage cart items and quantities
 - Checkout flow
 
+## Screenshots
+
+| Onboarding | Onboarding (Interests) | Home |
+| --- | --- | --- |
+| ![Onboarding Step 1](screenshots/onboarding-1.png) | ![Onboarding Step 2](screenshots/onboarding-2.png) | ![Home Screen](screenshots/home.png) |
+
+| Book Details | Cart |
+| --- | --- |
+| ![Book Details Screen](screenshots/book-details.png) | ![Cart Screen](screenshots/cart.png) |
+
 ## Technical Stack
 
 - React Native CLI
