@@ -13,6 +13,7 @@ import Onboarding from '../app-stack/onboarding/Onboarding';
 import Search from '../app-stack/search/Search';
 import { screenNames } from '../utils/screenNames';
 import { ScreenHeader } from './components/ScreenHeader';
+import BookPreference from '~/app-stack/book-preference/BookPreference';
 
 const Stack = createNativeStackNavigator();
 
@@ -73,6 +74,16 @@ export function OtherNavigator() {
         name={screenNames.ONBOARDING}
         component={Onboarding}
       />
+      
+      <Stack.Screen
+        options={{
+          // headerShown: false,
+          title: "-"
+        }}
+        name={screenNames.BOOK_PREFERENCE}
+        component={BookPreference}
+      />
+
       <Stack.Screen
         options={{
           headerShown: true,

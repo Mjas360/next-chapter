@@ -48,11 +48,7 @@ const Onboarding = () => {
         <PaperButton
           mode="contained"
           style={{ minWidth: '60%' }}
-          onPress={() =>
-            navigate(screenNames.APP_TAB_STACK, {
-              screen: screenNames.HOME,
-            })
-          }
+          onPress={() => navigate(screenNames.BOOK_PREFERENCE)}
         >
           {t('Continue')}
         </PaperButton>

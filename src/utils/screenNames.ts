@@ -1,6 +1,7 @@
 export const screenNames = {
   OTHER_STACK: 'other-stack',
   ONBOARDING: 'onboarding',
+  BOOK_PREFERENCE: 'book-preference',
   
   SEARCH: 'search',
   BOOK_DETAILS: 'book-details',
